@@ -1,0 +1,30 @@
+Subject-Independent Split Results
+=================================
+
+--- RESNET ---
+Weighted F1: 0.7252420538724322
+                    precision    recall  f1-score   support
+
+     Mild Dementia       0.35      0.52      0.41      1159
+ Moderate Dementia       0.00      0.00      0.00       244
+      Non Demented       0.84      0.92      0.88     12078
+Very mild Dementia       0.43      0.20      0.28      2928
+
+          accuracy                           0.75     16409
+         macro avg       0.40      0.41      0.39     16409
+      weighted avg       0.72      0.75      0.73     16409
+
+
+--- MOBILENET ---
+Weighted F1: 0.6717285295456477
+                    precision    recall  f1-score   support
+
+     Mild Dementia       0.22      0.73      0.33      1159
+ Moderate Dementia       0.00      0.00      0.00       244
+      Non Demented       0.86      0.89      0.88     12078
+Very mild Dementia       0.42      0.01      0.02      2928
+
+          accuracy                           0.71     16409
+         macro avg       0.38      0.41      0.31     16409
+      weighted avg       0.73      0.71      0.67     16409
+
