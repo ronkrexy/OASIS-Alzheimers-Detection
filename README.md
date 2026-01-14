@@ -1,4 +1,10 @@
-# OASIS-Alzheimers-Detection
+## Citation
+
+Paper submitted to IEEE EMBC 2025.
+
+*Paper PDF will be available after publication.*
+
+For now, see the repository for full implementation details.# OASIS-Alzheimers-Detection
 Comparative analysis of ResNet50 vs MobileNetV2 on OASIS MRI data.
 
 # Data Leakage in Alzheimer's Detection
