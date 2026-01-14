@@ -8,7 +8,7 @@ import time
 # ==========================================
 # 1. AUTO-INSTALL DEPENDENCIES
 # ==========================================
-print("⚙️ Setting up Environment...")
+print(" Setting up Environment...")
 required = ['kaggle', 'tensorflow', 'scikit-learn', 'matplotlib', 'pandas']
 installed = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze']).decode('utf-8')
 for pkg in required:
@@ -27,20 +27,19 @@ from sklearn.metrics import classification_report, f1_score
 # ==========================================
 # 2. KAGGLE AUTHENTICATION
 # ==========================================
-print("🚀 configuring Kaggle Credentials...")
+print(" configuring Kaggle Credentials...")
 kaggle_dir = os.path.expanduser('~/.kaggle')
 os.makedirs(kaggle_dir, exist_ok=True)
 
-# YOUR CREDENTIALS
+
 creds = {"username":"ronrexy","key":"35697bceee2dff0e1af9b46fd926f4b5"}
 
 with open(os.path.join(kaggle_dir, 'kaggle.json'), 'w') as f:
     json.dump(creds, f)
 os.chmod(os.path.join(kaggle_dir, 'kaggle.json'), 0o600)
 
-# ==========================================
 # 3. DATASET DOWNLOAD & SETUP
-# ==========================================
+
 DATA_ROOT = "oasis_data"
 if not os.path.exists(DATA_ROOT):
     os.makedirs(DATA_ROOT, exist_ok=True)
@@ -56,9 +55,9 @@ if not found:
 DATASET_PATH = os.path.dirname(found[0])
 print(f" Data Source: {DATASET_PATH}")
 
-# ==========================================
+
 # 4. L40S HARDWARE CONFIG
-# ==========================================
+
 print("🔧 Configuring L40S GPU...")
 gpus = tf.config.list_physical_devices('GPU')
 if gpus:
@@ -73,18 +72,18 @@ from tensorflow.keras import mixed_precision
 policy = mixed_precision.Policy('mixed_float16')
 mixed_precision.set_global_policy(policy)
 
-# ==========================================
+
 # 5. HYPERPARAMETERS
-# ==========================================
+
 IMG_SIZE = (224, 224)
 # L40S (48GB VRAM) allows large batches = faster training
 BATCH_SIZE = 128 
 EPOCHS = 20
 CLASSES = sorted(["Mild Dementia", "Moderate Dementia", "Non Demented", "Very mild Dementia"])
 
-# ==========================================
+
 # 6. PIPELINE UTILITIES
-# ==========================================
+
 def get_class_weights():
     counts = {}
     for c in CLASSES:
@@ -126,9 +125,9 @@ def build_ds(model_type, subset):
     # L40S Optimization: Parallel mapping + Prefetching
     return ds.map(preprocess, num_parallel_calls=tf.data.AUTOTUNE).prefetch(tf.data.AUTOTUNE)
 
-# ==========================================
+
 # 7. MAIN TRAINING LOOP
-# ==========================================
+
 strategy = tf.distribute.MirroredStrategy() if len(gpus) > 1 else tf.distribute.get_strategy()
 
 results = {}
@@ -196,11 +195,11 @@ for m_name in ['resnet', 'mobilenet']:
     model.save(f"{m_name}_oasis_l40s.keras")
     print(report)
 
-# ==========================================
+
 # 8. FINAL OUTPUT
-# ==========================================
+
 print("\n" + "="*40)
-print("🏆 FINAL COMPARISON (L40S)")
+print(" FINAL COMPARISON (L40S)")
 print("="*40)
 for m, res in results.items():
     print(f"{m.upper():<15} | Weighted F1: {res['f1']:.4f}")
