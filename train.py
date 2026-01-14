@@ -5,9 +5,9 @@ import json
 import glob
 import time
 
-# ==========================================
+
 # 1. AUTO-INSTALL DEPENDENCIES
-# ==========================================
+
 print(" Setting up Environment...")
 required = ['kaggle', 'tensorflow', 'scikit-learn', 'matplotlib', 'pandas']
 installed = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze']).decode('utf-8')
@@ -24,9 +24,9 @@ from tensorflow.keras.applications.resnet50 import preprocess_input as resnet_pr
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input as mobilenet_preprocess
 from sklearn.metrics import classification_report, f1_score
 
-# ==========================================
+
 # 2. KAGGLE AUTHENTICATION
-# ==========================================
+
 print(" configuring Kaggle Credentials...")
 kaggle_dir = os.path.expanduser('~/.kaggle')
 os.makedirs(kaggle_dir, exist_ok=True)
