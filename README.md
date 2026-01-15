@@ -1,6 +1,6 @@
 ## Citation
 
-Paper submitted to IEEE EMBC 2025.
+Paper submission to IEEE EMBC 2026.
 
 *Paper PDF will be available after publication.*
 
