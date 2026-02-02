@@ -1,6 +1,6 @@
 ## Citation
 
-Paper submission to IEEE EMBC 2026.
+Paper submission to Springer LNCS 2026.
 
 *Paper PDF will be available after publication.*
 
@@ -127,14 +127,11 @@ See paper Section VI for full discussion.
 
 ## Citation
 
-Paper submitted to IEEE EMBC 2025.
 ```bibtex
 @inproceedings{rexy2025alzheimers,
   title={Benchmarking Deep Learning Architectures for Alzheimer's Detection: 
          Quantifying the Impact of Data Leakage on Model Generalization},
   author={Rexy, Ron K},
-  booktitle={IEEE EMBC},
-  year={2025}
 }
 ```
 
